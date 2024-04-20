@@ -1,9 +1,13 @@
-<form action="#" method="post" class="d-flex justify-content-center align-items-center flex-column gap-3">
-	<label for="firstname">Имя</label>
-	<input type="text" id="firstname" name="firstname" class="form-control">
-	<label for="lastname">Фамилия</label>
-	<input type="text" id="lastname" name="lastname" class="form-control">
-	<label for="description">Описание</label>
-	<textarea rows="3" cols="3" id="description" name="description" class="form-control"></textarea>
+<form action="" method="get" class="d-flex justify-content-center align-items-center flex-column gap-3">
+	@csrf
+	@foreach($fields as $name => $value)
+		<label for="firstname">{{ $value }}</label>
+		@if($name === 'description')
+			<textarea class="form-control" name="{{ $name }}" id="{{ $name }}" cols="5" rows="5"></textarea>
+		@else
+			<input type="text" id="{{ $name }}" name="{{ $name }}" class="form-control">
+		@endif
+	@endforeach
 	<button class="btn btn-success">Submit form</button>
 </form>
+

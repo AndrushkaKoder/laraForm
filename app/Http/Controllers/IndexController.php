@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\FormService;
+use Illuminate\View\View;
 
 class IndexController extends Controller
 {
-	public function index()
+	public function __invoke(): View
 	{
-		return view('index');
+		return view('index', [
+			'fields' => FormService::getFields()
+		]);
 	}
 }
